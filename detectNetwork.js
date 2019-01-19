@@ -32,12 +32,42 @@ var detectNetwork = function(cardNumber) {
     }
   }
 
-  //Valid Mastercard?
+  //Valid Mastercard or Maestro?
   else if (inputNum[0] === "5"){
-    if (isMastercard(inputNum)){
+    //Test if Maestro
+    if (inputNum[1] === "0"){
+      if (isMaestro(inputNum)){
+        return "Maestro";
+      } else {
+        return "Not a valid Maestro";
+      } 
+    }
+
+    //Otherwise send to Mastercard tester
+    else if (isMastercard(inputNum)){
       return "MasterCard";
     } else {
       return "Not a valid MasterCard";
+    }
+  }
+
+
+  //Valid Discover or Maestro?
+  else if (inputNum[0] === "6"){
+    //Test if Maestro
+    if (inputNum[1] === "3"){
+      if (isMaestro(inputNum)){
+        return "Maestro";
+      } else {
+        return "Not a valid Maestro";
+      } 
+    }
+
+    //Otherwise send to Discover tester
+    else if (isDiscover(inputNum)){
+      return "Discover";
+    } else {
+      return "Not a valid Discover";
     }
   }
 
@@ -46,6 +76,7 @@ var detectNetwork = function(cardNumber) {
 };
 
 
+//////HELPER FUNCTIONS BELOW////////
 
 //Helper Function which determines the #s beginning in 3: Diner's Club and American Express
 var validDinerOrAmerican = function(cardNumArray){
@@ -88,3 +119,16 @@ var isMastercard = function(cardNumArray){
   }
   return false;
 };
+
+
+
+//Discover helper function. Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
+var isDiscover = function(cardNumArray){
+  return
+}
+
+
+//Maestro helper function. Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
+var isMaestro = function(cardNumArray){
+  return
+}
