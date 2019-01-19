@@ -14,33 +14,42 @@ var detectNetwork = function(cardNumber) {
 
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 
-//Check right number of numbers
-if (cardNumber.length < 14 || cardNumber.length > 15) {
-  return "ERROR: Not a valid number"
-}
-
-inputNum = cardNumber.split("");
-
-
-//Check if it's a valid Diner's Club or AE card
-if (inputNum[0] != "3"){
-  return "This number is not part of the Diner's Club network nor American Express's."
-} 
-// checking Diner's Club
-else if (inputNum[1] === "8" || inputNum[1] === "9"){
-  if (inputNum.length === 14){
-    return "Diner's Club"
+  //Check right number of numbers
+  if (cardNumber.length < 14 || cardNumber.length > 15) {
+    return "ERROR: Not a valid number"
   }
-}
-// checking American Express
-else if (inputNum[1] === "4" || inputNum[1] === "7"){
-  if (inputNum.length === 15){
-    return "American Express"
-  }
-}
+
+  inputNum = cardNumber.split("");
 
 
-return "This number is not part of the Diner's Club network nor American Express's."
+  //Check if it's a valid Diner's Club or AE card
+  if (inputNum[0] === "3"){
+    return validDinerOrAmerican(inputNum);
+  } 
+
+
+  return "This number is not a valid credit card number."
 };
+
+
+
+//Helper Function which determines the #s beginning in 3: Diner's Club and American Express
+var validDinerOrAmerican = function(cardNumArray){
+  // checking Diner's Club
+  if (cardNumArray[1] === "8" || cardNumArray[1] === "9"){
+    if (cardNumArray.length === 14){
+      return "Diner's Club"
+    }
+  }
+  // checking American Express
+  else if (cardNumArray[1] === "4" || cardNumArray[1] === "7"){
+    if (cardNumArray.length === 15){
+      return "American Express"
+    }
+  }
+
+  return "This number is not part of the Diner's Club network nor American Express's."
+};
+
 
 
