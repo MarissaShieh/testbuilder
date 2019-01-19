@@ -14,10 +14,6 @@ var detectNetwork = function(cardNumber) {
 
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 
-  //Check right number of numbers
-  if (cardNumber.length < 14 || cardNumber.length > 15) {
-    return "ERROR: Not a valid number"
-  }
 
   inputNum = cardNumber.split("");
 
@@ -26,6 +22,17 @@ var detectNetwork = function(cardNumber) {
   if (inputNum[0] === "3"){
     return validDinerOrAmerican(inputNum);
   } 
+
+  //Valid Visa?
+  else if (inputNum[0] === "4"){
+    if (isVisa){
+      return "Visa"
+    } else {
+      return "Not a valid Visa number"
+    }
+
+  }
+
 
 
   return "This number is not a valid credit card number."
@@ -52,4 +59,16 @@ var validDinerOrAmerican = function(cardNumArray){
 };
 
 
+
+//Visa helper function: Visa always has a prefix of 4 and a length of 13, 16, or 19.
+var isVisa = function(cardNumArray){
+  if (cardNumArray.length === 13 || cardNumArray.length === 16 || cardNumArray.length === 19){
+    return true;
+  } 
+  return false;
+};
+
+
+
+//MasterCard helper function: Mastercard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
 
