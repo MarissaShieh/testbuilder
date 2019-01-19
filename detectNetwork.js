@@ -26,23 +26,23 @@ var detectNetwork = function(cardNumber) {
   //Valid Visa?
   else if (inputNum[0] === "4"){
     if (isVisa(inputNum)){
-      return "Visa"
+      return "Visa";
     } else {
-      return "Not a valid Visa number"
+      return "Not a valid Visa number";
     }
   }
 
   //Valid Mastercard?
   else if (inputNum[0] === "5"){
     if (isMastercard(inputNum)){
-      return "MasterCard"
+      return "MasterCard";
     } else {
-      return "Not a valid MasterCard"
+      return "Not a valid MasterCard";
     }
   }
 
 
-  return "This number is not a valid credit card number."
+  return "This number is not a valid credit card number.";
 };
 
 
@@ -52,17 +52,17 @@ var validDinerOrAmerican = function(cardNumArray){
   // checking Diner's Club
   if (cardNumArray[1] === "8" || cardNumArray[1] === "9"){
     if (cardNumArray.length === 14){
-      return "Diner's Club"
+      return "Diner's Club";
     }
   }
   // checking American Express
   else if (cardNumArray[1] === "4" || cardNumArray[1] === "7"){
     if (cardNumArray.length === 15){
-      return "American Express"
+      return "American Express";
     }
   }
 
-  return "This number is not part of the Diner's Club network nor American Express's."
+  return "This number is not part of the Diner's Club network nor American Express's.";
 };
 
 
@@ -70,9 +70,9 @@ var validDinerOrAmerican = function(cardNumArray){
 //Visa helper function: Visa always has a prefix of 4 and a length of 13, 16, or 19.
 var isVisa = function(cardNumArray){
   if (cardNumArray.length === 13 || cardNumArray.length === 16 || cardNumArray.length === 19){
-    return true
+    return true;
   } 
-  return false
+  return false;
 };
 
 
@@ -80,11 +80,11 @@ var isVisa = function(cardNumArray){
 //MasterCard helper function: Mastercard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
 var isMastercard = function(cardNumArray){
   if (cardNumArray.length != 16){
-    return false
+    return false;
   }
 
   if (cardNumArray[1]==="1" || cardNumArray[1]==="2" || cardNumArray[1]==="3" || cardNumArray[1]==="4" || cardNumArray[1]==="5"){
-    return true
+    return true;
   }
-  return false
+  return false;
 };
