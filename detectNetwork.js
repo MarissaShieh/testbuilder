@@ -17,7 +17,7 @@ var detectNetwork = function(cardNumber) {
 //Check if all numbers and right number of numbers
 if (isNaN(cardNumber)){
   return "ERROR: Not a number."
-} else if (cardNumber.toString().length > 14 || cardNumber.toString().length < 15) {
+} else if (cardNumber.toString().length < 14 || cardNumber.toString().length > 15) {
   return "ERROR: Not a valid number"
 }
 
