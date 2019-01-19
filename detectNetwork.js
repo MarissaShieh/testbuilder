@@ -21,8 +21,28 @@ if (isNaN(cardNumber)){
   return "ERROR: Not a valid number"
 }
 
+//Make the number workable by turning it into array  
+inputNum = cardNumber.toString().split("");
+
+//Check if it's a valid Diner's Club or AE card
+if (inputNum[0] != "3"){
+  return "This number is not part of the Diner's Club network nor American Express's."
+} 
+// checking Diner's Club
+else if (inputNum[1] === "8" || inputNum[1] === "9"){
+  if (inputNum.length === 14){
+    return "Diner's Club"
+  }
+}
+// checking American Express
+else if (inputNum[1] === "4" || inputNum[1] === "7"){
+  if (inputNum.length === 15){
+    return "American Express"
+  }
+}
 
 
+return "This number is not part of the Diner's Club network nor American Express's."
 };
 
 
