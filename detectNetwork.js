@@ -35,9 +35,9 @@ var detectNetwork = function(cardNumber) {
   //Valid Mastercard?
   else if (inputNum[0] === "5"){
     if (isMastercard(inputNum)){
-      return "Mastercard"
+      return "MasterCard"
     } else {
-      return "Not a valid Mastercard"
+      return "Not a valid MasterCard"
     }
   }
 
