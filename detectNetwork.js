@@ -140,5 +140,23 @@ var isDiscover = function(cardNumArray){
 
 //Maestro helper function. Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
 var isMaestro = function(cardNumArray){ 
+  if(cardNumArray.length<12 || cardNumArray.length>19){
+    return false;
+  }
+
+  if (cardNumArray.slice(0,2).toString() === "5,0"){
+    if (cardNumArray.slice(2,4).toString() === "1,8"){
+      return true;
+    } else if (cardNumArray.slice(2,4).toString() === "2,0"){
+      return true;
+    } else if (cardNumArray.slice(2,4).toString() === "3,8"){
+      return true;
+    }
+  } 
+
+  else if (cardNumArray.slice(0,4).toString() === "6,3,0,4"){
+    return true;
+  }
+
   return false;
 }
