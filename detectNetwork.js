@@ -18,7 +18,7 @@ var detectNetwork = function(cardNumber) {
   inputNum = cardNumber.split("");
 
 
-  //Check if it's a valid Diner's Club or AE card
+//Check if it's a valid Diner's Club or AE card
   if (inputNum[0] === "3"){
     return validDinerOrAmerican(inputNum);
   } 
@@ -124,11 +124,21 @@ var isMastercard = function(cardNumArray){
 
 //Discover helper function. Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
 var isDiscover = function(cardNumArray){
-  return
-}
+  if (cardNumArray.length === 16 || cardNumArray.length === 19){
+    if (cardNumArray[1] === "5"){
+      return true;
+    } else if (cardNumArray.slice(1,4).toString() === "0,1,1"){
+      return true;
+    } else if (cardNumArray.slice(1,3).toString() === "4,4" || cardNumArray.slice(1,3).toString() === "4,5" || cardNumArray.slice(1,3).toString() === "4,6" || cardNumArray.slice(1,3).toString() === "4,7" || cardNumArray.slice(1,3).toString() === "4,8" || cardNumArray.slice(1,3).toString() === "4,9") {
+      return true;
+    }
+  }
+
+  return false;
+};
 
 
 //Maestro helper function. Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
-var isMaestro = function(cardNumArray){
-  return
+var isMaestro = function(cardNumArray){ 
+  return false;
 }
