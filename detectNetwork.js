@@ -14,15 +14,13 @@ var detectNetwork = function(cardNumber) {
 
   // Once you've read this, go ahead and try to implement this function, then return to the console.
 
-//Check if all numbers and right number of numbers
-if (isNaN(cardNumber)){
-  return "ERROR: Not a number."
-} else if (cardNumber.toString().length < 14 || cardNumber.toString().length > 15) {
+//Check right number of numbers
+if (cardNumber.length < 14 || cardNumber.length > 15) {
   return "ERROR: Not a valid number"
 }
 
-//Make the number workable by turning it into array  
-inputNum = cardNumber.toString().split("");
+inputNum = cardNumber.split("");
+
 
 //Check if it's a valid Diner's Club or AE card
 if (inputNum[0] != "3"){
