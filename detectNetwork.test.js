@@ -345,5 +345,16 @@ var expect = chai.expect;
 
 });
 
-//describe('should support China UnionPay')
+
+
+describe('should support China UnionPay', function() {
+  var assert = chai.assert;
+  
+  it('has a prefix of 622126 and a length of 16', function() {assert(detectNetwork('6221267890123456') === 'China UnionPay');});)
+  it('has a prefix of 622127 and a length of 16', function() {assert(detectNetwork('6221277890123456') === 'China UnionPay');});)
+  it('has a prefix of 622128 and a length of 16', function() {assert(detectNetwork('6221287890123456') === 'China UnionPay');});)
+  it('has a prefix of 622129 and a length of 16', function() {assert(detectNetwork('6221297890123456') === 'China UnionPay');});)
+
+
+});
 //describe('should support Switch')
