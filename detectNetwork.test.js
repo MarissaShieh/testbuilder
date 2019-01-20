@@ -150,11 +150,11 @@ describe('Discover', function() {
   it('has a prefix of 6011 and a length of 19', function() {
     assert(detectNetwork('6011567890123456789') === 'Discover');
   });
+});
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card. Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
  
-
 });
 
 //describe('should support China UnionPay')
