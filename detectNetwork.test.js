@@ -347,7 +347,7 @@ var expect = chai.expect;
 
 
 
-describe('should support China UnionPay', function() {
+describe('China UnionPay', function() {
   var assert = chai.assert;
   
    
@@ -3600,4 +3600,13 @@ describe('should support China UnionPay', function() {
   it('has a prefix of 6288 and a length of 19', function() {assert(detectNetwork('6288567890123456789') === 'China UnionPay');})
 
 });
-//describe('should support Switch')
+
+describe('Switch', function() {
+  var assert = chai.assert;
+ 
+  it('has a prefix of 4903 and a length of 16, function() {assert(detectNetwork('4903567890123456') === 'Switch');})
+  it('has a prefix of 4903 and a length of 18, function() {assert(detectNetwork('490356789012345678') === 'Switch');})
+  it('has a prefix of 4903 and a length of 19, function() {assert(detectNetwork('4903567890123456789') === 'Switch');})
+
+
+});
