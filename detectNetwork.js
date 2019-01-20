@@ -27,6 +27,7 @@ var detectNetwork = function(cardNumber) {
     }
   }
 
+
   //Valid Mastercard or Maestro?
   else if (inputNum[0] === "5"){
     //Test if Maestro
@@ -47,7 +48,7 @@ var detectNetwork = function(cardNumber) {
   }
 
 
-  //Valid Discover or Maestro?
+  //Valid Discover, Maestro, or China UnionPay?
   else if (inputNum[0] === "6"){
     //Test if Maestro
     if (inputNum[1] === "3"){
@@ -57,6 +58,15 @@ var detectNetwork = function(cardNumber) {
         return "Not a valid Maestro";
       } 
     }
+
+    //Test if China UnionPay
+      if (inputNum[1] === "2"){
+        if (isChinaUnionPay(inputNum)){
+          return "China UnionPay";
+        } else {
+          return "Not a valid ChinaUnionPay";
+        } 
+      }
 
     //Otherwise send to Discover tester
     else if (isDiscover(inputNum)){
@@ -156,4 +166,20 @@ var isMaestro = function(cardNumArray){
   }
 
   return false;
-}
+};
+
+
+//China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
+var isChinaUnionPay = function(cardNumArray){ 
+};
+
+
+//Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19. In case of Visa
+//and Switch overlap, choose Switch
+var isSwitch = function(cardNumArray){ 
+};
+
+
+
+
+
