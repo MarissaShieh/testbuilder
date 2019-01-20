@@ -127,27 +127,34 @@ describe('MasterCard', function() {
   // and should, but that's just for learning), so once you've gotten 
   // these tests to pass using should syntax, refactor your tests to 
   // use either expect or should, but not both. 
-  var should = chai.should();
   
   it('has a prefix of 54 and a length of 16', function() {
-    detectNetwork('5412345678901234').should.equal('MasterCard');
+    expect(detectNetwork('5412345678901234')).to.equal('MasterCard');
   });
  
   it('has a prefix of 55 and a length of 16', function() {
-    detectNetwork('5512345678901234').should.equal('MasterCard');
-  })
+    expect(detectNetwork('5512345678901234')).to.equal('MasterCard');
+  });
  
 });
 
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
-  it('has a prefix of 6011 and a length of 16');
-  it('has a prefix of 6011 and a length of 19');
-});
+  var assert = chai.assert;
+ 
+  it('has a prefix of 6011 and a length of 16', function() {
+    assert(detectNetwork('6011567890123456') === 'Discover');
+  });
+
+  it('has a prefix of 6011 and a length of 19', function() {
+    assert(detectNetwork('6011567890123456789') === 'Discover');
+  });
 
 describe('Maestro', function() {
-  // Write full test coverage for the Maestro card
+  // Write full test coverage for the Maestro card. Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
+  
+
 });
 
 describe('should support China UnionPay')
