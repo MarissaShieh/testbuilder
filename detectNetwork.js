@@ -216,20 +216,20 @@ var isChinaUnionPay = function(cardNumArray){
 
   var prefix = 0; //just getting it to recognize prefix will be a number
 
-  //get the slice, turn the "" into #s, turn the array of nums into a single num 
+  //get the slice, turn the "" into #s, turn the array of nums into a single string. But that string, representing a num, gets implicitly converted into a num w/ greater than and less than operators
   prefix = cardNumArray.slice(0,3).map(Number).join(""); 
   if (prefix >= 624 && prefix <= 626){
-    return true
+    return true;
   }
 
   prefix = cardNumArray.slice(0,4).map(Number).join("");  
   if (prefix >= 6282 && prefix <= 6288){
-    return true
+    return true;
   }
 
   prefix = cardNumArray.slice(0,6).map(Number).join(""); 
   if (prefix >= 622126 && prefix <= 622925){
-    return true
+    return true;
   }
 
   return false;
@@ -239,9 +239,32 @@ var isChinaUnionPay = function(cardNumArray){
 //Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19. In case of Visa
 //and Switch overlap, choose Switch
 var isSwitch = function(cardNumArray){ 
+  if (cardNumArray.length === 16 || cardNumArray.length === 18 || cardNumArray.length === 19){
+    if (cardNumArray.slice(0,4).map(Number).join("") === "4903") {
+      return true;
+    } else if (cardNumArray.slice(0,4).map(Number).join("") === "4905") {
+      return true;
+    } else if (cardNumArray.slice(0,4).map(Number).join("") === "4911") {
+      return true;
+    } else if (cardNumArray.slice(0,4).map(Number).join("") === "4936") {
+      return true;
+    }
+
+    else if (cardNumArray.slice(0,6).map(Number).join("") === "564182") {
+      return true;
+    } else if (cardNumArray.slice(0,6).map(Number).join("") === "633110") {
+      return true;
+    }
+
+    else if (cardNumArray.slice(0,4).map(Number).join("") === "6333") {
+      return true;
+    } else if (cardNumArray.slice(0,4).map(Number).join("") === "6759") {
+      return true;
+    }
+  }
+
+  return false;
 };
-
-
 
 
 
