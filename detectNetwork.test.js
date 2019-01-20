@@ -153,9 +153,9 @@ describe('Discover', function() {
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card. Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
-  
+ 
 
 });
 
-describe('should support China UnionPay')
-describe('should support Switch')
+//describe('should support China UnionPay')
+//describe('should support Switch')
