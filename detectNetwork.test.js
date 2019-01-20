@@ -150,11 +150,67 @@ describe('Discover', function() {
   it('has a prefix of 6011 and a length of 19', function() {
     assert(detectNetwork('6011567890123456789') === 'Discover');
   });
+
+  it('has a prefix of 644 and a length of 16', function() {
+    assert(detectNetwork('6444567890123456') === 'Discover');
+  });
+
+  it('has a prefix of 644 and a length of 19', function() {
+    assert(detectNetwork('6444567890123456789') === 'Discover');
+  });
+
+  it('has a prefix of 645 and a length of 16', function() {
+    assert(detectNetwork('6454567890123456') === 'Discover');
+  });
+
+  it('has a prefix of 645 and a length of 19', function() {
+    assert(detectNetwork('6454567890123456789') === 'Discover');
+  });
+
+  it('has a prefix of 646 and a length of 16', function() {
+    assert(detectNetwork('6464567890123456') === 'Discover');
+  });
+
+  it('has a prefix of 646 and a length of 19', function() {
+    assert(detectNetwork('6464567890123456789') === 'Discover');
+  });
+
+  it('has a prefix of 647 and a length of 16', function() {
+    assert(detectNetwork('6474567890123456') === 'Discover');
+  });
+
+  it('has a prefix of 647 and a length of 19', function() {
+    assert(detectNetwork('6474567890123456789') === 'Discover');
+  });
+
+  it('has a prefix of 648 and a length of 16', function() {
+    assert(detectNetwork('6484567890123456') === 'Discover');
+  });
+
+  it('has a prefix of 648 and a length of 19', function() {
+    assert(detectNetwork('6484567890123456789') === 'Discover');
+  });
+
+  it('has a prefix of 649 and a length of 16', function() {
+    assert(detectNetwork('6494567890123456') === 'Discover');
+  });
+
+  it('has a prefix of 649 and a length of 19', function() {
+    assert(detectNetwork('6494567890123456789') === 'Discover');
+  });
+
+  it('has a prefix of 65 and a length of 16', function() {
+    assert(detectNetwork('6544567890123456') === 'Discover');
+  });
+
+  it('has a prefix of 65 and a length of 19', function() {
+    assert(detectNetwork('6544567890123456789') === 'Discover');
+  });
 });
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card. Maestro always has a prefix of 5018, 5020, 5038, or 6304, and a length of 12-19.
- 
+
 });
 
 //describe('should support China UnionPay')
