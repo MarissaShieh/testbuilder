@@ -13,13 +13,23 @@ var detectNetwork = function(cardNumber) {
   inputNum = cardNumber.split("");
 
 
-//Check if it's a valid Diner's Club or AE card
+//Check if it's a valid Diner's Club or AE card (starts w/ 3)
   if (inputNum[0] === "3"){
     return validDinerOrAmerican(inputNum);
   } 
 
-  //Valid Visa?
+  //Valid Switch or Visa? (starts w/ 4)
   else if (inputNum[0] === "4"){
+    //Test if Switch (49)
+    if (inputNum[1] === "9"){
+      if (isSwitch(inputNum)){
+        return "Switch";
+      } else {
+        return "Not a valid Switch number"
+      }
+    }
+
+    //Test if Visa (catch all 4s)
     if (isVisa(inputNum)){
       return "Visa";
     } else {
@@ -28,9 +38,9 @@ var detectNetwork = function(cardNumber) {
   }
 
 
-  //Valid Mastercard or Maestro?
+  //Valid Mastercard or Maestro? (starts w/ 5)
   else if (inputNum[0] === "5"){
-    //Test if Maestro
+    //Test if Maestro (starts w/ 50)
     if (inputNum[1] === "0"){
       if (isMaestro(inputNum)){
         return "Maestro";
@@ -39,7 +49,16 @@ var detectNetwork = function(cardNumber) {
       } 
     }
 
-    //Otherwise send to Mastercard tester
+    //Test if Switch (starts w/ 56)
+    if (inputNum[1] === "6"){
+      if (isSwitch(inputNum)){
+        return "Switch";
+      } else {
+        return "Not a valid Switch";
+      } 
+    }
+
+    //Otherwise send to Mastercard tester (catch all 5s)
     else if (isMastercard(inputNum)){
       return "MasterCard";
     } else {
@@ -48,27 +67,47 @@ var detectNetwork = function(cardNumber) {
   }
 
 
-  //Valid Discover, Maestro, or China UnionPay?
+  //Valid Discover, Maestro, Switch, or China UnionPay? (starts w/ 6)
   else if (inputNum[0] === "6"){
-    //Test if Maestro
+    //Test if Maestro or Switch (starts w/ 63)
     if (inputNum[1] === "3"){
-      if (isMaestro(inputNum)){
-        return "Maestro";
+      //if Maestro (starts w/ 630)
+      if (inputNum[2] === "0"){
+        if (isMaestro(inputNum)){
+          return "Maestro";
+        } else {
+          return "Not a valid Maestro";
+        }
+      }
+      //if Switch (starts w/ 633)
+      else if (inputNum[2] === "3"){
+        if (isSwitch(inputNum)){
+          return "Switch"
+        } else {
+          return "Not a valid Switch"
+        }
+      }
+    }
+  
+    //Test if China UnionPay (starts w/ 62)
+    if (inputNum[1] === "2"){
+      if (isChinaUnionPay(inputNum)){
+        return "China UnionPay";
       } else {
-        return "Not a valid Maestro";
+        return "Not a valid ChinaUnionPay";
       } 
     }
 
-    //Test if China UnionPay
-      if (inputNum[1] === "2"){
-        if (isChinaUnionPay(inputNum)){
-          return "China UnionPay";
-        } else {
-          return "Not a valid ChinaUnionPay";
-        } 
-      }
+    //Test if Switch (starts w/ 67)
+    if (inputNum[1] === "7"){
+      if (isSwitch(inputNum)){
+        return "Switch";
+      } else {
+        return "Not a valid Switch";
+      } 
+    }
 
-    //Otherwise send to Discover tester
+    //Otherwise send to Discover tester (catch all 6s)
     else if (isDiscover(inputNum)){
       return "Discover";
     } else {
