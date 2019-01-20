@@ -171,6 +171,29 @@ var isMaestro = function(cardNumArray){
 
 //China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
 var isChinaUnionPay = function(cardNumArray){ 
+  if (cardNumArray.length<16 || cardNumArray.length>19){
+    return false;
+  }
+
+  var prefix = 0; //just getting it to recognize prefix will be a number
+
+  //get the slice, turn the "" into #s, turn the array of nums into a single num 
+  prefix = cardNumArray.slice(0,3).map(Number).join(""); 
+  if (prefix >= 624 && prefix <= 626){
+    return true
+  }
+
+  prefix = cardNumArray.slice(0,4).map(Number).join("");  
+  if (prefix >= 6282 && prefix <= 6288){
+    return true
+  }
+
+  prefix = cardNumArray.slice(0,6).map(Number).join(""); 
+  if (prefix >= 622126 && prefix <= 622925){
+    return true
+  }
+
+  return false;
 };
 
 
