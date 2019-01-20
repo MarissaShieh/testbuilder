@@ -3554,5 +3554,20 @@ describe('should support China UnionPay', function() {
   it('has a prefix of 622923 and a length of 19', function() {assert(detectNetwork('6229237890123456789') === 'China UnionPay');})
   it('has a prefix of 622924 and a length of 19', function() {assert(detectNetwork('6229247890123456789') === 'China UnionPay');})
   it('has a prefix of 622925 and a length of 19', function() {assert(detectNetwork('6229257890123456789') === 'China UnionPay');})
+
+
+  it('has a prefix of 624 and a length of 16', function() {assert(detectNetwork('6244567890123456') === 'China UnionPay');})
+  it('has a prefix of 625 and a length of 16', function() {assert(detectNetwork('6254567890123456') === 'China UnionPay');})
+  it('has a prefix of 626 and a length of 16', function() {assert(detectNetwork('6264567890123456') === 'China UnionPay');})
+  it('has a prefix of 624 and a length of 17', function() {assert(detectNetwork('62445678901234567') === 'China UnionPay');})
+  it('has a prefix of 625 and a length of 17', function() {assert(detectNetwork('62545678901234567') === 'China UnionPay');})
+  it('has a prefix of 626 and a length of 17', function() {assert(detectNetwork('62645678901234567') === 'China UnionPay');})
+  it('has a prefix of 624 and a length of 18', function() {assert(detectNetwork('624456789012345678') === 'China UnionPay');})
+  it('has a prefix of 625 and a length of 18', function() {assert(detectNetwork('625456789012345678') === 'China UnionPay');})
+  it('has a prefix of 626 and a length of 18', function() {assert(detectNetwork('626456789012345678') === 'China UnionPay');})
+  it('has a prefix of 624 and a length of 19', function() {assert(detectNetwork('6244567890123456789') === 'China UnionPay');})
+  it('has a prefix of 625 and a length of 19', function() {assert(detectNetwork('6254567890123456789') === 'China UnionPay');})
+  it('has a prefix of 626 and a length of 19', function() {assert(detectNetwork('6264567890123456789') === 'China UnionPay');})
+
 });
 //describe('should support Switch')
